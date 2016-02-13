@@ -1,0 +1,47 @@
+<html>
+<head>
+    {% for inc in includes %}
+        {%if inc.incType == 'css' %}
+        <style type="text/css">
+            {{inc.src|safe}}
+        </style>
+        {% endif %}
+    {% endfor %}
+
+    <style type="text/css">
+        {{ cssSrc | safe }}
+    </style>
+
+</head>
+{{ htmlSrc | safe }}
+
+{% for inc in includes %}
+
+    {%if inc.incType == 'js' %}
+        <script type="text/javascript">
+            {{inc.src|safe}}
+        </script>
+    {% endif %}
+{% endfor %}
+<script type="text/javascript">
+
+    var propsApp ={};
+
+    propsApp.data = {{ data | json | safe  }};
+    propsApp.app = {{ app | json | safe  }};
+
+
+
+
+    window.onload = function(e){
+        propsApp.runtime.AppLoad(propsApp.data, propsApp.app);
+    };
+
+    window.propsApp = propsApp;
+</script>
+<script type="text/javascript">
+    {{jsSrc | safe}};
+    propsApp.runtime = app;
+</script>
+
+</html>

@@ -1,0 +1,11 @@
+{
+  "bundle" : "/Users/1kmonkies/SourceCode/FlowAPI/props-app-server/tests/testApps/superWeather",
+  "port" : "8667",
+  "app" :{
+    "teamName" : "Super Team",
+    "displayTime" : 60000
+  },
+  "parms" :{
+    "zip" : "08215"
+  }
+}
