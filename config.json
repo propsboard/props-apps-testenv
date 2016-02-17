@@ -1,11 +1,11 @@
 {
-  "bundle" : "/Users/1kmonkies/SourceCode/FlowAPI/props-app-server/tests/testApps/superWeather",
+  "bundle" : "/Users/1kmonkies/SourceCode/FlowAPI/example-propapps/propsapp-webviewer",
   "port" : "8667",
   "app" :{
     "teamName" : "Super Team",
     "displayTime" : 60000
   },
-  "parms" :{
-    "zip" : "08215"
-  }
+  "params" :[
+    { "name": "url", "value": "https://chartbeat.com/demo/#_"}
+  ]
 }

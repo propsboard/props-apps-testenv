@@ -1,7 +1,7 @@
 <html>
 <head>
     {% for inc in includes %}
-        {%if inc.incType == 'css' %}
+        {%if inc.type == 'css' %}
         <style type="text/css">
             {{inc.src|safe}}
         </style>
@@ -17,7 +17,7 @@
 
 {% for inc in includes %}
 
-    {%if inc.incType == 'js' %}
+    {%if inc.type == 'js' %}
         <script type="text/javascript">
             {{inc.src|safe}}
         </script>

@@ -28,9 +28,8 @@ var loadPollingData = function(cb){
   async.each(bundleConf.requests, function(configRequest, rcb){
 
     var url = configRequest.url;
-    _.each(Object.keys(config.parms), function(p){
-
-      url = url.replace('{' + p + '}', config.parms[p]);
+    _.each(config.params.config, function(p){
+      url = url.replace('{' + p.name + '}', p.value);
     });
 
     console.log('_', 'making request', url);
@@ -68,7 +67,7 @@ var loadIncludes = function(cb){
       includes.push({
         name: inc.name,
         src: d,
-        incType: inc.incType
+        type: inc.type
       });
       rcb(err);
     });
@@ -105,9 +104,13 @@ app.get('/app', function(req, res){
       });
     }
   ], function(err, data, incs){
+
+    var appData = config.app;
+    appData.config = config.params;
+
     res.send(tpl({
       data: data,
-      app: config.app,
+      app: appData,
       includes: incs,
       htmlSrc: htmlSrc,
       cssSrc: cssSrc,
