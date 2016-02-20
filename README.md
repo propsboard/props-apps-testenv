@@ -27,6 +27,16 @@ The test enviroment will read the contents of `config.json` in the project root.
 
 The test enviroment will also simulate the polling of data as will be done by the Props Application Framework.  Making a GET request `http://localhost:8667/refresh` (assuming you don't change the port) will cause the test enviroment to refresh the requests as specified in your loaded `app.json` file.  The value of the data requests are cached so you do not need to refresh the data each time.
 
+### Open Source Examples
+
+To get started, pull down one of these and start playing.  If you are working on something you think the community might be interested in just let us know and we would be happy to include it in this list and even help out!
+
+|App Name|frameworks|description|
+|:-----:|:-----:|:----------|
+|[SuperWeather](https://github.com/propsboard/propsapp-superweather)|AngularJS/MomentJS/Bootstrap|Polling app that pulls data from Weather Underground.  Based initially on [this awesome Chrome tutorial](http://www.ng-newsletter.com/posts/chrome-apps-on-angular.html) |
+|[WebViewer](https://github.com/propsboard/propsapp-webviewer)|*N/A*|Super simple app that shows a user supplied URL on the PropsBoard|
+|[How2Props](https://github.com/propsboard/propsapp-how2props)|JQuery/Unslider|App that shows some images explaining how to use Props to help new users get rolling|
+
 ## Props App Development
 
 Propsboard apps follow a very simple pattern originating with an `app.json` file.  The `app.json` file defines where view, style, and js content exists as well as general information about the app.  The various attributes of the format are detailed below.
@@ -37,7 +47,7 @@ Our goal with the PAF framework is to ensure a safe and secure enviroment and fo
 
 ### Configuration (app.json)
 
-In this documentation a sample weather app is referenced.  Below is the `app.json` for that app which is currently live in the Props Application Framework.  The full source of the app is available here.
+In this documentation a sample weather app is referenced.  Below is the `app.json` for that app which is currently live in the Props Application Framework.  The full source of the app is available [here](https://github.com/propsboard/propsapp-superweather).
  
  ```json
  {
