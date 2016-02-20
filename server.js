@@ -22,7 +22,13 @@ console.log('', '-', 'Loaded css');
 var jsSrc = fs.readFileSync(config.bundle + '/' + bundleConf.bundles[0].js, 'utf8');
 console.log('', '-', 'Loaded js');
 
-app.use('/app/images', express.static(config.bundle + '/' + bundleConf.bundles[0].images));
+var mountpoint = '/app/' + bundleConf.images;
+if(mountpoint[mountpoint.length-1] === '/'){
+  mountpoint = mountpoint.substr(0, mountpoint.length-1);
+}
+console.log('', '-', 'mounting images ' + mountpoint + ' to ', config.bundle + '/' + bundleConf.images);
+
+app.use(mountpoint, express.static(config.bundle + '/' + bundleConf.images));
 
 var loadPollingData = function(cb){
   async.each(bundleConf.requests, function(configRequest, rcb){
@@ -61,7 +67,8 @@ var loadCachedData = function(cb){
 
 var loadIncludes = function(cb){
   var includes = [];
-  async.each(bundleConf.includes, function(inc, rcb){
+
+  async.eachSeries(bundleConf.includes, function(inc, rcb){
     var p = config.bundle + '/' +  inc.path;
     fs.readFile(p, 'utf8', function (err,d) {
       includes.push({
@@ -91,6 +98,10 @@ app.get('/refresh', function(req, res){
 });
 
 app.get('/app', function(req, res){
+  res.redirect('/app/index.html');
+});
+
+app.get('/app/index.html', function(req, res){
 
   async.waterfall([
     //Load cached data
