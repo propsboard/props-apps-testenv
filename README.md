@@ -2,7 +2,34 @@
 
 This project is useful for building and testing apps built to run on Propsboard.com
 
-Propsboard apps follow a very simple pattern originating with an `app.json` file.  The `app.json` file defines where view, style, and js content exists as well as general information about the app.  The various attributes of the format are detailed below
+## Setup and Usage
+
+Pull this project down to your local machine (only tested on OSX at this time).  You will need to have NodeJS and [gulp](https://github.com/gulpjs/gulp/blob/master/docs/getting-started.md) installed.  To setup the project run the following:
+
+```bash
+    npm install
+```
+
+To run the app test enviroment run the following 
+
+```bash
+    gulp
+```
+
+The test enviroment will read the contents of `config.json` in the project root.  Ensure that the property `bundle` points to the full path of your app directory.  The app directory should contain the `app.json` file.  The contents of the config file are detailed below
+
+|Property Name|description|
+|:-----:|:----------|
+|bundle|The full path to the application your would like the test enviroment to load|
+|port|The port to run the test enviroment on|
+|app|The app object that will be passed into the app.  This will contain any unencrypted params supplied by the user as well as basic information managed by the Props enviroment (e.g. name of the team, how long the app will show)|
+|params|The params to simulate in the test enviroment|
+
+The test enviroment will also simulate the polling of data as will be done by the Props Application Framework.  Making a GET request `http://localhost:8667/refresh` (assuming you don't change the port) will cause the test enviroment to refresh the requests as specified in your loaded `app.json` file.  The value of the data requests are cached so you do not need to refresh the data each time.
+
+## Props App Development
+
+Propsboard apps follow a very simple pattern originating with an `app.json` file.  The `app.json` file defines where view, style, and js content exists as well as general information about the app.  The various attributes of the format are detailed below.
 
 ### Configuration (app.json)
 Below are the attributes that can be found in `app.json`
