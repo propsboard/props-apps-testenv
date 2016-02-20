@@ -7,13 +7,13 @@ This project is useful for building and testing apps built to run on Propsboard.
 Pull this project down to your local machine (only tested on OSX at this time).  You will need to have NodeJS and [gulp](https://github.com/gulpjs/gulp/blob/master/docs/getting-started.md) installed.  To setup the project run the following:
 
 ```bash
-    npm install
+   $ npm install
 ```
 
 To run the app test enviroment run the following 
 
 ```bash
-    gulp
+   $ gulp
 ```
 
 The test enviroment will read the contents of `config.json` in the project root.  Ensure that the property `bundle` points to the full path of your app directory.  The app directory should contain the `app.json` file.  The contents of the config file are detailed below
@@ -32,6 +32,63 @@ The test enviroment will also simulate the polling of data as will be done by th
 Propsboard apps follow a very simple pattern originating with an `app.json` file.  The `app.json` file defines where view, style, and js content exists as well as general information about the app.  The various attributes of the format are detailed below.
 
 ### Configuration (app.json)
+
+In this documentation a sample weather app is referenced.  Below is the `app.json` for that app which is currently live in the Props Application Framework.  The full source of the app is available here.
+ 
+ ```json
+ {
+ 	"name" : "Super Weather",
+ 	"author" : "Justin Furniss",
+ 	"description" : "Weather like it has never been done before.",
+     "longDescription" : "When it rains it pours but how will you know if its going to rain?  Don' your raincoats.  Its a classic chicken and the egger and here comes the first solution known to mankind.  Weather, on yer TVs.",
+ 	"icon_128" : "img/icon_128.png",
+ 	"icon_512" : "img/icon_128.png",
+ 	"screenshots" : [ "img/ss1.png", "img/ss2.png"],
+     "license" : "Creative Commons Zero",
+     "source" : "https://github.com/propsboard/props-client-js",
+ 	"version" : "2",
+ 	"allowedDomains" : [ "media.superweather.com" ],
+     "minDisplayInterval" : 3660,
+     "params" : [{
+       "name" : "zip",
+       "type" : "string",
+       "title" : "Zip Code",
+       "placeholder": "e.g. 08215",
+       "description": "Enter the 5 digit zip code for the location you would the forcast to show.",
+       "verify" : "^\\d{5}$",
+       "required" : true,
+       "position" : 0
+     }],
+     "requests" : [{
+       "type" : "polling",
+       "name" : "weatherData",
+       "ttl" : 3660,
+       "url" : "http://api.wunderground.com/api/a38415465d1e1971/forecast/q/{zip}.json",
+       "headers" : {
+         "Accept-Type" : "text/json"
+       }
+     }],
+ 	"bundles" : [
+       {
+         "name" : "default",
+         "html" : "views/app.html",
+         "css" : "style/app.css",
+         "js" : "js/app.js",
+         "loadImage" : "img/superlogo2.png",
+         "defaultPreroll": "img/preroll.gif",
+         "loadBackgroundColor" : "#236B8E"
+       }
+     ],
+     "images" : "img/",
+ 	"includes" : [
+       {"name" : "angular" , "path" : "lib/angular-1.5.0.min.js", "type" : "js"},
+       {"name" : "moment" , "path" : "lib/moment.min.js", "type" : "js"},
+       {"name" : "bootstrap", "path" : "lib/bootstrap.min.css", "type" : "css"}
+     ]
+ 
+ }
+ ```
+
 Below are the attributes that can be found in `app.json`
 
 |Property Name|default|description|
