@@ -21,7 +21,7 @@ Below are the attributes that can be found in `app.json`
 |version||The version you use locally to specific the app version.  The props app server uses its own sequential versioning system but this value will be displayed to your users.|
 |allowedDomains|[]|An array containing the domains your app will need access to.  It is preferred that no outside domain be needed so try to include all assets locally. 
 |minDisplayInterval|3600|Number of seconds between display of your app on boards.  This number can be configured by the user installing your app.  It is generally a good idea to not be a hog here :)|
-|params|[]An array of parameter objects that users will supply to configure your app.
+|params|[]|An array of parameter objects that users will supply to configure your app.
 |requests|[]|An array of requests that your app will use to pull data.|
 |bundles||An array of app bundles your app uses.|
 |images||A relative path to the images in your application package.  Normally something like `img/`|
