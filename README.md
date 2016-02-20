@@ -1,6 +1,6 @@
 # Props Apps Test Enviroment
 
-This project is useful for building and testing apps built to run on Propsboard.com
+This project is useful for building and testing apps built to run on Propsboard.com.  Please feel free to reach out with any questions or suggestions in our [Slack Community](http://www.propsboard.com/community/). (Message @justin)
 
 ## Setup and Usage
 
@@ -30,6 +30,10 @@ The test enviroment will also simulate the polling of data as will be done by th
 ## Props App Development
 
 Propsboard apps follow a very simple pattern originating with an `app.json` file.  The `app.json` file defines where view, style, and js content exists as well as general information about the app.  The various attributes of the format are detailed below.
+
+### App Deployment
+
+Our goal with the PAF framework is to ensure a safe and secure enviroment and for that reason our team will be reviewing any applications that wish to be made available in Props.  If you have an application you would just like to have available for your team, please reach out and we can help you with that.  You can reach us in our [Slack Community](http://www.propsboard.com/community/) 
 
 ### Configuration (app.json)
 
