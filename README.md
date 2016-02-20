@@ -63,7 +63,7 @@ In this documentation a sample weather app is referenced.  Below is the `app.jso
        "type" : "polling",
        "name" : "weatherData",
        "ttl" : 3660,
-       "url" : "http://api.wunderground.com/api/a38415465d1e1971/forecast/q/{zip}.json",
+       "url" : "http://api.wunderground.com/api/xxxxxxxxxxxxxxxx/forecast/q/{zip}.json",
        "headers" : {
          "Accept-Type" : "text/json"
        }
