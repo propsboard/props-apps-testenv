@@ -23,14 +23,13 @@
         </script>
     {% endif %}
 {% endfor %}
+<script src="http://localhost:35729/livereload.js"></script>
 <script type="text/javascript">
 
     var propsApp ={};
 
     propsApp.data = {{ data | json | safe  }};
     propsApp.app = {{ app | json | safe  }};
-
-
 
 
     window.onload = function(e){
